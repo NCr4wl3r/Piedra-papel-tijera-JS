@@ -27,9 +27,15 @@ const checkInputIsNull = function (uInput) {
 };
 
 const playerSelect = function () {
-  const choice = prompt(
-    `Escoge entre ${PIEDRA}, ${TIJERA} o ${PAPEL}!`
-  ).toUpperCase();
+  let choice;
+  try {
+    choice = prompt(
+      `Escoge entre ${PIEDRA}, ${TIJERA} o ${PAPEL}!`
+    ).toUpperCase();
+  } catch (error) {
+    alert(`${error} Error en la seleccion `);
+    return playerSelect();
+  }
 
   if (choice !== PIEDRA && choice !== TIJERA && choice !== PAPEL) {
     alert("Seleccion incorrecta");
